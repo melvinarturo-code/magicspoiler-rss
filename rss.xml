@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>MagicSpoiler - Derniers Spoilers</title>
+    <link>https://www.magicspoiler.com/</link>
+    <description>Les dernières cartes Magic: The Gathering révélées sur MagicSpoiler.com</description>
+    <item>
+      <title>Deceit - Lorwyn Eclipsed Spoiler</title>
+      <link>https://www.magicspoiler.com/mtg-spoiler/deceit/</link>
+      <description><![CDATA[
+        <img src="https://www.magicspoiler.com/wp-content/uploads/2025/09/Deceit-Lorwyn-Eclipsed-Spoiler-400x559.webp" />
+      ]]></description>
+      <pubDate>Tue, 30 Sep 2025 13:00:00 EST</pubDate>
+    </item>
+    <item>
+      <title>Overgrown Tomb - Lorwyn Eclipsed Spoiler</title>
+      <link>https://www.magicspoiler.com/mtg-spoiler/overgrown-tomb-6/</link>
+      <description><![CDATA[
+        <img src="https://www.magicspoiler.com/wp-content/uploads/2025/09/Overgrown-Tomb-Lorwyn-Eclipsed-Spoiler-400x559.webp" />
+      ]]></description>
+      <pubDate>Tue, 30 Sep 2025 12:45:00 EST</pubDate>
+    </item>
+    <!-- Tu peux ajouter d'autres cartes ici -->
+  </channel>
+</rss>
