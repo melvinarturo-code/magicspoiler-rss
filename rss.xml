@@ -1,26 +1,60 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
-  <channel>
-    <title>MagicSpoiler - Derniers Spoilers</title>
-    <link>https://www.magicspoiler.com/</link>
-    <description>Les dernières cartes Magic: The Gathering révélées sur MagicSpoiler.com</description>
-    <item>
-      <title>Deceit - Lorwyn Eclipsed Spoiler</title>
-      <link>https://www.magicspoiler.com/mtg-spoiler/deceit/</link>
-      <description><![CDATA[
-        <img src="https://www.magicspoiler.com/wp-content/uploads/2025/09/Deceit-Lorwyn-Eclipsed-Spoiler-400x559.webp" />
-      ]]></description>
-      <pubDate>Tue, 30 Sep 2025 13:00:00 EST</pubDate>
-    </item>
-    <item>
-      <title>Overgrown Tomb - Lorwyn Eclipsed Spoiler</title>
-      <link>https://www.magicspoiler.com/mtg-spoiler/overgrown-tomb-6/</link>
-      <description><![CDATA[
-        <img src="https://www.magicspoiler.com/wp-content/uploads/2025/09/Overgrown-Tomb-Lorwyn-Eclipsed-Spoiler-400x559.webp" />
-      ]]></description>
-      <pubDate>Tue, 30 Sep 2025 12:45:00 EST</pubDate>
-    </item>
-    <!-- Tu peux ajouter d'autres cartes ici -->
-  </channel>
-</rss>
+#include <Magick++.h>
+#include <iostream>
+#include <filesystem>
 
+using namespace std;
+using namespace Magick;
+
+int main(int argc, char *argv[])
+{
+    InitializeMagick(*argv);
+
+    const string inputPath = "input.jpg";
+
+    // Vérification de l'existence du fichier
+    if (!filesystem::exists(inputPath)) {
+        cerr << "Erreur : le fichier '" << inputPath << "' est introuvable." << endl;
+        return 1;
+    }
+
+    try {
+        // Lecture de l'image originale
+        Image original(inputPath);
+
+        // Redimensionnement
+        Image resized = original;
+        resized.resize(Geometry(800, 600));
+        resized.write("output.jpg");
+        cout << "✔ Image redimensionnée → output.jpg" << endl;
+
+        // Flou
+        Image blurred = original;
+        blurred.blur(5.0, 3.0);
+        blurred.write("blurred.jpg");
+        cout << "✔ Image floutée → blurred.jpg" << endl;
+
+        // Détection des contours
+        Image edged = original;
+        edged.edge(0.5);
+        edged.write("edged.jpg");
+        cout << "✔ Contours détectés → edged.jpg" << endl;
+
+        // Relief
+        Image embossed = original;
+        embossed.emboss();
+        embossed.write("embossed.jpg");
+        cout << "✔ Image en relief → embossed.jpg" << endl;
+
+        // Netteté
+        Image sharpened = original;
+        sharpened.sharpen(1.5);
+        sharpened.write("sharpened.jpg");
+        cout << "✔ Image accentuée → sharpened.jpg" << endl;
+
+    } catch (Exception &error_) {
+        cerr << "Exception capturée : " << error_.what() << endl;
+        return 1;
+    }
+
+    return 0;
+}
